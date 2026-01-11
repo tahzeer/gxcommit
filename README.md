@@ -5,6 +5,23 @@
 
 A CLI that analyzes your git diff and generates logical git commits with AI using Groq. Automatically handles git add and git commit for you.
 
+
+## Architecture
+
+gxcommit is built with the following technologies:
+
+- **Go**: The core programming language providing performance, safety, and excellent tooling
+- **Cobra CLI**: Command-line framework for building robust CLI applications with subcommands and flags
+- **Groq AI**: Powers intelligent commit message generation using advanced language models
+- **Git Integration**: Automatically handles git diff analysis, staging, and commit creation
+
+The architecture consists of:
+- `cmd/`: CLI command definitions and entry points
+- `internal/app/`: Core application logic for git diff analysis and AI integration
+- `internal/config/`: Configuration management using gitconfig-style files
+- `internal/executil/`: Utilities for executing shell commands and scripts
+
+
 ## Installation
 
 ### Install via Go
