@@ -3,7 +3,7 @@
 [![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://go.dev/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
-A CLI that analyzes your git diff and generates logical git commits with AI using Groq. Automatically handles git add and git commit for you.
+A CLI that analyzes your folder changes and generates multiple logical git commits with AI using Groq. Automatically handles git add and git commit for you, or generates a script for you to edit and run.
 
 
 ## Architecture
