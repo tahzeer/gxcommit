@@ -1,4 +1,4 @@
-module gxcommit
+module github.com/tahzeer/gxcommit
 
 go 1.24.2
 
