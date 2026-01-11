@@ -10,7 +10,7 @@ A CLI that analyzes your git diff and generates logical git commits with AI usin
 ### Install via Go
 
 ```sh
-go install github.com/tahzeer/gxcommit@latest
+go install github.com/tahzeer/gxcommit
 ```
 
 Make sure `$GOPATH/bin` is in your `$PATH`.
@@ -28,8 +28,6 @@ go build -o gxcommit
 Move the binary to your PATH:
 
 ```sh
-mv gxcommit /usr/local/bin/
-# or
 sudo mv gxcommit /usr/local/bin/
 ```
 
@@ -89,7 +87,7 @@ gxcommit config [command]
 
 **Example:**
 ```sh
-# Set API key
+# set api key
 gxcommit config set GROQ_API_KEY=your-api-key
 ```
 
@@ -136,7 +134,7 @@ gxcommit -c PROJ-123 run
 Manage configuration via the `config` command:
 
 ```sh
-# Set API key
+# set api key
 gxcommit config set GROQ_API_KEY=<your-api-key>
 ```
 
@@ -150,13 +148,13 @@ Configuration is stored in `~/.gxconfig` in gitconfig format:
 ## Development
 
 ```sh
-# Run locally
+# run locally
 go run main.go
 
-# Build
+# build
 go build -o gxcommit
 
-# Run tests
+# run tests
 go test ./...
 ```
 
