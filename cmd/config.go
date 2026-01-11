@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"gxcommit/internal/config"
+	"github.com/tahzeer/gxcommit/internal/config"
 
 	"github.com/spf13/cobra"
 )

@@ -1,6 +1,6 @@
 package main
 
-import "gxcommit/cmd"
+import "github.com/tahzeer/gxcommit/cmd"
 
 func main() {
 	cmd.Execute()

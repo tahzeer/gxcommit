@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"gxcommit/internal/config"
+	"github.com/tahzeer/gxcommit/internal/config"
 )
 
 // Commit represents a logical git commit suggested by the LLM.
@@ -119,7 +119,7 @@ Diff:
 		"messages": []map[string]string{
 			{
 				"role":    "system",
-				"content": "Return ONLY valid JSON. No markdown. No explanations.",
+				"content": "Return ONLY valid JSON. No markdown. No explanations. Do not wrap JSON in ```json code blocks.",
 			},
 			{
 				"role":    "user",
@@ -181,6 +181,20 @@ func parseGroqResponse(raw []byte) ([]Commit, error) {
 	}
 
 	content := envelope.Choices[0].Message.Content
+
+	content = strings.TrimSpace(content)
+	if strings.HasPrefix(content, "```") {
+		parts := strings.SplitN(content, "\n", 2)
+		if len(parts) == 2 {
+			content = parts[1]
+		}
+		if strings.Contains(content, "```") {
+			parts = strings.SplitN(content, "```", 2)
+			content = parts[0]
+		}
+	}
+
+	content = strings.TrimSpace(content)
 
 	var parsed struct {
 		Commits []Commit `json:"commits"`

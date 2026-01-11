@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"gxcommit/internal/app"
-	"gxcommit/internal/executil"
+	"github.com/tahzeer/gxcommit/internal/app"
+	"github.com/tahzeer/gxcommit/internal/executil"
 
 	"github.com/spf13/cobra"
 )

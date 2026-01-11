@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"gxcommit/internal/app"
+	"github.com/tahzeer/gxcommit/internal/app"
 
 	"github.com/spf13/cobra"
 )
