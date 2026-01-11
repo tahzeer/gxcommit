@@ -91,6 +91,8 @@ gxcommit save-script [flags]
 **Flags:**
 - `-h, --help`: help for save-script
 
+**Note:** This creates a `gxcommit.sh` file in your current directory. Consider adding `gxcommit.sh` to your `.gitignore` file.
+
 ### config
 
 Manage gxcommit configuration.
