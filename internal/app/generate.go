@@ -50,26 +50,32 @@ func GenerateScript(jira string) string {
 // ---------------- Git helpers ----------------
 
 func getDiff() (string, error) {
+	// Get diff for modified/staged files
 	cmd := exec.Command("git", "diff", "HEAD")
 	out, err := cmd.Output()
-	if err == nil {
-		return string(out), nil
+	diff := string(out)
+	if err != nil {
+		diff = "" // For initial commit or other errors
 	}
 
-	// Handle initial commit
-	if exec.Command("git", "rev-parse", "HEAD").Run() != nil {
-		untracked, _ := exec.Command(
-			"git", "ls-files", "--others", "--exclude-standard",
-		).Output()
+	// Get untracked files
+	untracked, _ := exec.Command(
+		"git", "ls-files", "--others", "--exclude-standard",
+	).Output()
 
-		if len(untracked) == 0 {
-			return "", nil
+	// Combine diff and untracked
+	if len(untracked) > 0 {
+		if diff != "" {
+			diff += "\n"
 		}
-
-		return "Initial commit with new files:\n" + string(untracked), nil
+		diff += "New files:\n" + string(untracked)
 	}
 
-	return "", fmt.Errorf("failed to read git diff")
+	if strings.TrimSpace(diff) == "" {
+		return "", nil
+	}
+
+	return diff, nil
 }
 
 // ---------------- Groq integration ----------------
